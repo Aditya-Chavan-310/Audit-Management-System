@@ -1,0 +1,293 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color:#f4f6fa;
+    font-size: 1.5vw;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+    font-family: 'Lato', sans-serif;
+
+
+}
+.logo1 {
+
+    display: flex;
+    background: rgb(217,236,253);
+    background: radial-gradient(circle, rgb(189 245 205) 22%, rgba(219,219,220,1) 68%, rgba(88,148,199,1) 100%);
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+
+
+}
+/* ------------for logo display -----------*/
+
+.logo {
+    padding: 5px;
+}
+.kalyani{
+    height: 5vw;
+}
+.scifi{
+    height: 4.5vw;
+}
+.ai{
+    height: 3vw;
+}
+
+
+
+
+
+.left-logo {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.nav-bar{
+    width:100%;
+}
+.head1{
+    display:flex;
+    justify-content:space-between;
+    margin: 0 10px 0 10px;
+}
+.head-name{
+    margin-left: 20px;
+    width:30%;
+    color: #0079bc;
+    font-size: 1.3vw;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* Style the navigation bar */
+.all-cont {
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Display navigation items horizontally */
+    justify-content: space-around; /* Space items evenly horizontally */
+}
+
+nav ul li {
+    margin: 0 10px; /* Add margin between navigation items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000; /* Set your desired text color */
+    font-size: 1.3vw;
+    font-family: 'Lato', sans-serif;
+}
+nav a {
+    text-decoration: none;
+    color:#2d5f8c;
+
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+/* -----------dashboard start----- */
+.main-box{
+    background-color:#fff;
+    border-radius: 1.1rem;
+    margin: 2%;
+    padding: 2%;
+    overflow-y: auto;
+    flex-grow:1;
+    margin-top:0;
+    font-family: 'Lato', sans-serif;
+    font-size:1.1vw;
+}
+
+
+/* ----------for footer-------------- */
+
+/* New styles for the footer */
+.footer
+{
+    display: flex;
+    background: rgb(217,236,253);
+    background: radial-gradient(circle, rgb(189 245 205) 22%, rgba(219,219,220,1) 68%, rgba(88,148,199,1) 100%);
+    color: white;
+    width:100%;
+    text-align: center;
+    /* padding: 1rem 0; */
+    color: black;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    justify-content: space-between;
+ }
+.data{
+    display: flex;
+    gap: 1%;
+    margin-left: 20px;
+    width: 30%;
+    font-size: 1.2vw;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+}
+.responsive-image {
+    max-width: 100%; /* Limit maximum width to the container's width */
+    max-height: 2rem; /* Set a maximum height (adjust as needed) */
+    width: auto; /* Let the width adjust proportionally */
+    height: auto; /* Let the height adjust proportionally */
+}
+
+/* ----------start my css-------------- */
+.submit-btn1
+{
+    width: 19%;
+	cursor: pointer;
+	display: block;
+	background: #E7EFF9;
+	border: 1;
+	border-color: black;
+	outline: none;
+	border-radius: 20px;
+	margin-left: 43.5%;
+	position: relative;
+	margin-top:1.5%;
+
+	color:black;
+	font-size: 1.3vw;
+	padding:0.5%;
+}
+.submit-btn1:hover
+{
+    opacity: 0.9;
+}
+.capture
+{
+    width: 95%;
+	cursor: pointer;
+	display: block;
+	background:#E7EFF9;
+	border: 1;
+	border-color: white;
+	outline: none;
+	border-radius: 20px;
+	padding:2.5%;
+	color:black;
+	font-size: 1.1vw;
+}
+.capture:hover
+{
+    opacity: 0.9;
+}
+.dropdown
+{
+  background: white;
+  display: inline-block;
+  color: black;
+  padding: 8px;
+  width: 100%;
+  border: 1.2px solid white;
+  border-color: black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  margin: 5px;
+  font-size: 1.1vw;
+  cursor: pointer;
+}
+.dropdown1
+{
+  background: white;
+  display: inline-block;
+  color: black;
+  padding: 8px;
+  width: 50%;
+  border: 1.2px solid white;
+  border-color: black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  margin: 5px;
+  font-size: 1.1vw;
+  cursor: pointer;
+  margin-bottom:2%;
+}
+.submit-btn
+{
+    width: 19%;
+	cursor: pointer;
+	display: block;
+	background: #E7EFF9;
+	border: 1;
+	border-color: black;
+	outline: none;
+	border-radius: 20px;
+	position: relative;
+	margin-top:1.5%;
+
+	color:black;
+	font-size: 1.3vw;
+	padding:0.5%;
+}
+/* style table*/
+table, td, th
+{
+  border: 1.5px solid #000000;
+  text-align: left;
+
+}
+table {
+	width: 100%;
+	height: 70%;
+	border-collapse: collapse;
+	overflow-x:auto;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	border: 1.5px solid #000000;
+    text-align: left;
+}
+.middle-align
+{
+    text-align:center;
+
+}
+td
+{
+	padding: 10px;
+	background-color: rgba(255,255,255,0.2);
+	color: #000000;
+	font-size: 1.1vw;
+	font-family: 'Lato', sans-serif;
+}
+
+th {
+	padding: 15px;
+    white-space: nowrap;
+    text-align:center;
+    background-color:#E7EFF9;
+    color: black;
+    font-size: 1.2vw;
+}
+tr:hover
+{
+    background-color:#D9DDDC;
+}
+tr:nth-child(even)
+{
+    background-color: #F0F8FF;
+}
+tr:nth-child(even):hover
+{
+    background-color:#D9DDDC;
+}
+
+.score_last
+{
+    height: 70%;
+    width:97%;
+}
+
+
+
+

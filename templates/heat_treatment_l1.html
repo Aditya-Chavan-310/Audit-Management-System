@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Heat Treatment</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layer_audit_min.css') }}">
+    <link rel="icon" href="{{url_for('static', filename='images/favicon.png')}}">
+
+</head>
+<body>
+
+    <!-- ------------start main navigation bar--------------- -->
+    <div class="logo1">
+        <div class="logo left-logo">
+            <img src= "{{url_for('static', filename='images/logo.png')}}" alt="Right logo" class="kalyani">
+        </div>
+        <div class="app-head">
+            <h3>Layer Audit {{laType}}</h3>
+        </div>
+        <div class="all-cont">
+            <nav>
+               <ul>
+                   <li><a href="{{ url_for('layermain') }}">Home</a></li>
+                   <li><a href="#">Log Out</a></li>
+               </ul>
+           </nav>
+        </div>
+
+    </div>
+
+     <div class="head1">
+          <div class="head-name">
+                <p>Heat Treatment</p>
+          </div>
+     </div>
+
+    <!--------------------end navigation bar-------------->
+
+    <div class="main-box">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <div class="level_1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr.No.</th>
+                        <th colspan="2">Checkpoints</th>
+                        <th>Capture</th>
+                        <th>Capture Status</th>
+                        <th>Weightage Criteria</th>
+                        <th>{{laType}} Score</th>
+                        <th>Remark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td rowspan="12" style="font-weight:bold;">Heat Treatment</td>
+                    <td>Ensure the Heat tratment is as per Control plan. How:- Check diewise heat treatment standard</td>
+                    <td>
+                        <button onclick="captureImage(1)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-1"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown1" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-</option>
+                            <option value="1">1-</option>
+                            <option value="2">2-</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue1"></td>
+                    <td>
+                        <input type="text" id="remarks1" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ensure weather all Material is loaded as per Loading Standard</td>
+                    <td>
+                        <button onclick="captureImage(2)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-2"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown2" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-Not ok as per loading standard</option>
+                            <option value="2">2-Ok as per loading standard</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue2"></td>
+                    <td>
+                        <input type="text" id="remarks2" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Check if Logbook maintinaed for Heat Code traceability</td>
+                    <td>
+                        <button onclick="captureImage(3)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-3"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown3" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-Not maintained</option>
+                            <option value="2">2-Maintained</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue3"></td>
+                    <td>
+                        <input type="text" id="remarks3" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Is the 4M Change board is update for any change</td>
+                    <td>
+                       <button onclick="captureImage(4)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-4"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown4" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-Not updated</option>
+                            <option value="2">2-Updated</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue4"></td>
+                    <td>
+                        <input type="text" id="remarks4" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Are the eddy current master seperately identified & kept</td>
+                    <td>
+                        <button onclick="captureImage(5)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-5"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown5" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-Not identified</option>
+                            <option value="2">2-Identified</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue5"></td>
+                    <td>
+                        <input type="text" id="remarks5" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Are the Poka Yokes are in working conditions</td>
+                    <td>
+                        <button onclick="captureImage(6)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-6"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown6" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-Not working</option>
+                            <option value="2">2-Working</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue6"></td>
+                    <td>
+                        <input type="text" id="remarks6" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Are the JH / PM Check sheets are fill up</td>
+                    <td>
+                        <button onclick="captureImage(7)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-7"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown7" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-Not filled fore more than 3 Shifts</option>
+                            <option value="1">1-Not filled for that shift only</option>
+                            <option value="2">2-Filled up to date</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue7"></td>
+                    <td>
+                        <input type="text" id="remarks7" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Are the countermeasures taken for Customer Complaints are implemented. How:- Check if any customer complaint and verify action implementation</td>
+                    <td>
+                        <button onclick="captureImage(8)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-8"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown8" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-No action implementation</option>
+                            <option value="2">2-No customer complaint/ Customer complaint & action implemented</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue8"></td>
+                    <td>
+                        <input type="text" id="remarks8" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Check weekly 5S register filled & check effectiveness</td>
+                    <td>
+                        <button onclick="captureImage(9)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-9"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown9" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-Not filled & not effective</option>
+                            <option value="1">1-5S register filled but no effectiveness</option>
+                            <option value="2">2-Filled & effectiveness seen as per score/physical condition</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue9"></td>
+                    <td>
+                        <input type="text" id="remarks9" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Check skill matrix on work station</td>
+                    <td>
+                        <button onclick="captureImage(10)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-10"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown10" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-Not updated, operator not included</option>
+                            <option value="1">1-Training not conducted as per plan</option>
+                            <option value="2">2-Skill matrix updated & training conducted as per plan</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue10"></td>
+                    <td>
+                        <input type="text" id="remarks10" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Check if operator is following DWM</td>
+                    <td>
+                        <button onclick="captureImage(11)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-11"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown11" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-No DWM available & not followed</option>
+                            <option value="1">1-DWM available but no awarenes</option>
+                            <option value="2">2-DWM available & followed</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue11"></td>
+                    <td>
+                        <input type="text" id="remarks11" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Check operator awareness about product & process</td>
+                    <td>
+                        <button onclick="captureImage(12)" class="capture">Capture</button>
+                    </td>
+                    <td id="status-12"></td>
+                    <td>
+                        <select class="dropdown" id="dropdown12" required>
+                            <option value="0">Select a value</option>
+                            <option value="0">0-No awareness</option>
+                            <option value="1">1-Aware but not effective</option>
+                            <option value="2">2-Aware & effective</option>
+                        </select>
+                    </td>
+                    <td class="middle-align" id="selectedValue12"></td>
+                    <td>
+                        <input type="text" id="remarks12" placeholder="Remarks (max 255 characters)" maxlength="255" required>
+                    </td>
+                </tr>
+
+                <tr>
+                        <td colspan="4">Heat Treatment</td>
+                        <td colspan="2">Score Obtained</td>
+                        <td colspan="2" class="middle-align" id="total">0</td>
+                </tr>
+
+                </tbody>
+            </table>
+            <form method="post">
+                 <button class="submit-btn1" name="submit-btn">Submit</button>
+            </form>
+        </div>
+     </div>
+    <footer class="footer">
+        <div class="data">
+            <img src= "{{url_for('static', filename='images/ai.png')}}" alt="Right Logo" class="ai">
+<!--            <img src="ai.png" alt="Right Logo" class="ai"/>-->
+            <p>Driven Manufacturing</p>
+        </div>
+        <div class="logo right-logo">
+            <!--            <img src="Scifilogo.png" alt="Right Logo" height="80px">-->
+            <img src= "{{url_for('static', filename='images/scifilogo.png')}}" alt="Right Logo" class="scifi">
+<!--            <img src="scifilogo.png" alt="Right Logo" class="scifi"/>-->
+         </div>
+    </footer>
+</body>
+
+<script>
+
+    //Remarks Function
+    function limitRemarksChars(input, maxLength) {
+      if (input.value.length > maxLength) {
+        input.value = input.value.substring(0, maxLength);
+      }
+    }
+
+    const remarksInputs = document.querySelectorAll("input[type='text']");
+    remarksInputs.forEach((input) => {
+      input.addEventListener("input", () => limitRemarksChars(input, 255));
+    });
+
+    //Function to update the total sum
+    function updateTotal() {
+    const dropdowns = document.querySelectorAll("select");
+    let sum = 0;
+
+    dropdowns.forEach((dropdown, index) => {
+      const selectedOption = dropdown.options[dropdown.selectedIndex];
+      const selectedValue = selectedOption.value;
+      const selectedText = selectedOption.text;
+      document.getElementById(`selectedValue${index + 1}`).textContent = `  ${selectedValue}`;
+      sum += parseInt(selectedValue);
+    });
+    document.getElementById("total").textContent = sum;
+    }
+
+    function sendDataToBackend() {
+      const dataToSend = [];
+
+      for (let i = 1; i <= 12; i++) {
+        const dropdown = document.getElementById(`dropdown${i}`);
+        const remarksInput = document.getElementById(`remarks${i}`);
+        const pointNumber = 'HeatTreatment_' + i;
+        const selectedOption = dropdown.options[dropdown.selectedIndex];
+        const selectedValue = selectedOption.value;
+        const remarks = remarksInput.value;
+
+        dataToSend.push({
+          pointNumber,
+          selectedValue,
+          remarks,
+        });
+      }
+
+      // Send data to the backend
+      fetch('/process_data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Data sent successfully');
+        } else {
+          console.error('Failed to send data to the backend');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+
+
+    const dropdowns = document.querySelectorAll("select");
+    dropdowns.forEach((dropdown) => {
+    dropdown.addEventListener("change", updateTotal);
+    });
+
+
+
+    const submitButton = document.querySelector(".submit-btn1");
+    submitButton.addEventListener("click", sendDataToBackend);
+
+    updateTotal();
+
+
+
+
+    //Function for capturing the image
+    function captureImage(rowNumber) {
+        const cameraWindow = window.open('/camera', 'Camera', 'width=480,height=480');
+
+        window.addEventListener('message', handleCapture);
+
+        function handleCapture(event) {
+            // Check the origin of the message
+            if (event.origin !== window.location.origin) {
+                return;
+            }
+
+
+            const dataURL = event.data; // this is the base64 encoded image
+            const imageName = `HeatTreatment_${rowNumber}.png`;
+
+            // Remove the event listener after capturing the image
+            window.removeEventListener('message', handleCapture);
+
+            // Send the image data to the server
+            sendDataToServer(dataURL, imageName, rowNumber);
+        }
+    }
+
+    function sendDataToServer(dataURL, imageName, rowNumber) {
+    // Prepare the data to be sent
+     console.log(dataURL);
+     const data = {
+         image: dataURL,
+         name: imageName
+     };
+
+    // Send a POST request to the server
+    fetch('/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        console.log(response);
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Optionally update the UI here to indicate success
+            var statusCell = document.getElementById("status-" + rowNumber);
+            statusCell.textContent = "Uploaded";
+        } else {
+            // Handle failure
+            alert("Failed to upload the image.");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        var statusCell = document.getElementById("status-" + rowNumber);
+            statusCell.textContent = "Failed";
+    });
+    }
+    </script>
+
+</html>

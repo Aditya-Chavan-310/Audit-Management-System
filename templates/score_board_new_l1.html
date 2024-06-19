@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Score Board</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layer_audit_min.css') }}">
+    <link rel="icon" href="{{url_for('static', filename='images/favicon.png')}}">
+
+</head>
+<body>
+
+     <!-- ------------start main navigation bar--------------- -->
+    <div class="logo1">
+        <div class="logo left-logo">
+
+            <img src= "{{url_for('static', filename='images/logo.png')}}" alt="Right logo" class="kalyani">
+
+        </div>
+        <div class="app-head">
+            <h3>Layer Audit Level 1</h3>
+        </div>
+        <div class="all-cont">
+            <nav>
+               <ul>
+                   <li><a href="{{ url_for('layermain') }}">Home</a></li>
+                   <li><a href="#">Log Out</a></li>
+               </ul>
+           </nav>
+        </div>
+
+    </div>
+
+     <div class="head1">
+          <div class="head-name">
+                <p>Score Board</p>
+          </div>
+     </div>
+
+     <!--------------------end navigation bar------------ -->
+
+    <div class="main-box">
+        <div class="level_1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr.No.</th>
+                        <th>Category</th>
+                        <th>Score Obtained</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in scores %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.score }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td style="font-weight:bold">Total Score (Out Of 140)</td>
+                        <td>{{ total_score }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <form method="post">
+                <button class="submit-btn1" name="submit-btn">Generate Report</button>
+            </form>
+        </div>
+     </div>
+
+     <footer class="footer">
+        <div class="data">
+            <img src= "{{url_for('static', filename='images/ai.png')}}" alt="Right Logo" class="ai">
+
+            <p>Driven Manufacturing</p>
+        </div>
+        <div class="logo right-logo">
+
+            <img src= "{{url_for('static', filename='images/scifilogo.png')}}" alt="Right Logo" class="scifi">
+
+         </div>
+    </footer>
+</body>
+</html>

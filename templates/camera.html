@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Camera Capture</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layer_audit_min.css') }}">
+</head>
+
+<body>
+    <video id="camera" autoplay></video>
+    <button id="captureButton">Capture</button>
+
+    <script>
+        const videoElement = document.getElementById('camera');
+
+        // Access the user's camera
+        navigator.mediaDevices.getUserMedia({ video: true})
+            .then((stream) => {
+                videoElement.srcObject = stream;
+            })
+            .catch((error) => {
+                console.error('Error accessing camera:', error);
+                alert('Error accessing camera');
+            });
+
+        // Add a click event listener to the "Capture" button
+        document.getElementById('captureButton').addEventListener('click', () => {
+            // Capture the image when the button is clicked
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+            // Convert the image to a data URL
+            const dataURL = canvas.toDataURL('image/png');
+
+            // Send the dataURL to the parent window (the main page)
+            window.opener.postMessage(dataURL, '*');
+
+            // Close the camera window/tab
+            window.close();
+        });
+    </script>
+</body>
+</html>

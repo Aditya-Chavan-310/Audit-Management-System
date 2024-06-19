@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Layer Audit</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layer_audit_min.css') }}">
+    <link rel="icon" href="{{url_for('static', filename='images/favicon.png')}}">
+
+</head>
+<body>
+
+     <!-- ------------start main navigation bar--------------- -->
+    <div class="logo1">
+        <div class="logo left-logo">
+            <img src= "{{url_for('static', filename='images/logo.png')}}" alt="Right logo" class="kalyani">
+        </div>
+        <div class="app-head">
+            <h3>Layer Audit</h3>
+        </div>
+        <div class="all-cont">
+            <nav>
+               <ul>
+                   <li><a href="{{ url_for('layermain') }}">Home</a></li>
+                   <li><a href="#">Log Out</a></li>
+               </ul>
+           </nav>
+        </div>
+
+    </div>
+
+     <div class="head1">
+          <div class="head-name">
+                <p>Layer Audit</p>
+          </div>
+     </div>
+
+    <!--------------------end navigation bar-------------->
+    <form method="post" class="main-box">
+        <h3>Date: {{date}}</h3>
+        <p style="font-weight:bold">Details to be filled <p>
+        <div class=" main_page1">
+            <div>
+                <label for="la_type">Layer Audit Level</label><br>
+                <select id="la_type" class="dropdown1" name="ls_type">
+                    <option value="0">Select Layer Level</option>
+                    <option value="Level 1">L1-Supervisor</option>
+                    <option value="Level 2">L2-HOD</option>
+                    <option value="Level 3">L3-Plant Head</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="lineNo">Line No.</label><br>
+                <select id="lineNo" class="dropdown1" name="line_no">
+                    <option value="0">Select Line No.</option>
+                    <option value="4003TP">4003TP</option>
+                    <option value="4004TP">4004TP</option>
+                    <option value="2504TP">2504TP</option>
+                    <option value="1005TP">1005TP</option>
+                    <option value="Hatebur">Hatebur</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="dieNo">Die No.</label><br>
+                <input type="text" id="dieNo" name="die_no"><br>
+            </div>
+
+            <div>
+                <input type="text" name="auditor" placeholder="Auditor" required>
+                <input type="text" name="auditee" placeholder="Auditee" required>
+            </div>
+        </div>
+        <input type="submit" class="submit-btn">
+    </form>
+    <footer class="footer">
+        <div class="data">
+            <img src= "{{url_for('static', filename='images/ai.png')}}" alt="Right Logo" class="ai">
+            <p>Driven Manufacturing</p>
+        </div>
+        <div class="logo right-logo">
+
+            <img src= "{{url_for('static', filename='images/scifilogo.png')}}" alt="Right Logo" class="scifi">
+
+        </div>
+    </footer>
+</body>
+</html>
